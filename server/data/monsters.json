@@ -1,0 +1,84 @@
+{
+  "monsters": [
+    {
+      "id": "goblin_warrior",
+      "name": "Goblin Warrior",
+      "stats": {
+        "maxHealth": 60,
+        "attack": 8,
+        "defense": 4,
+        "magic": 2
+      },
+      "moveset": [
+        { "id": "rusty_blade", "name": "Rusty Blade", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
+        { "id": "dirty_kick", "name": "Dirty Kick", "kind": "damage_debuff", "scale": "physical", "power": 0.5, "target": "enemy", "stat": "Defense", "delta": -3, "duration": 2 },
+        { "id": "frenzy", "name": "Frenzy", "kind": "buff", "scale": "none", "target": "self", "stat": "Attack", "delta": 4, "duration": 2 },
+        { "id": "headbutt", "name": "Headbutt", "kind": "damage", "scale": "physical", "power": 1.8, "target": "enemy" }
+      ]
+    },
+    {
+      "id": "goblin_mage",
+      "name": "Goblin Mage",
+      "stats": {
+        "maxHealth": 55,
+        "attack": 3,
+        "defense": 3,
+        "magic": 10
+      },
+      "moveset": [
+        { "id": "firebolt", "name": "Firebolt", "kind": "damage", "scale": "magic", "power": 1.0, "target": "enemy" },
+        { "id": "arcane_surge", "name": "Arcane Surge", "kind": "buff", "scale": "none", "target": "self", "stat": "Magic", "delta": 5, "duration": 2 },
+        { "id": "mana_drain", "name": "Mana Drain", "kind": "damage_debuff", "scale": "magic", "power": 0.5, "target": "enemy", "stat": "Magic", "delta": -3, "duration": 2 },
+        { "id": "hex_shield", "name": "Hex Shield", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 4, "duration": 2 }
+      ]
+    },
+    {
+      "id": "witch",
+      "name": "Witch",
+      "stats": {
+        "maxHealth": 80,
+        "attack": 5,
+        "defense": 4,
+        "magic": 14
+      },
+      "moveset": [
+        { "id": "shadow_bolt", "name": "Shadow Bolt", "kind": "damage", "scale": "magic", "power": 1.5, "target": "enemy" },
+        { "id": "drain_life", "name": "Drain Life", "kind": "damage_heal", "scale": "magic", "power": 0.6, "target": "enemy" },
+        { "id": "curse", "name": "Curse", "kind": "debuff", "scale": "none", "target": "enemy", "stat": "Attack", "delta": -4, "duration": 2 },
+        { "id": "dark_pact", "name": "Dark Pact", "kind": "buff_cost_hp", "scale": "none", "target": "self", "stat": "Magic", "delta": 6, "duration": 2, "hpCost": 10 }
+      ]
+    },
+    {
+      "id": "giant_spider",
+      "name": "Giant Spider",
+      "stats": {
+        "maxHealth": 100,
+        "attack": 14,
+        "defense": 8,
+        "magic": 3
+      },
+      "moveset": [
+        { "id": "bite", "name": "Bite", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
+        { "id": "web_throw", "name": "Web Throw", "kind": "damage_debuff", "scale": "physical", "power": 0.5, "target": "enemy", "stat": "Defense", "delta": -4, "duration": 2 },
+        { "id": "pounce", "name": "Pounce", "kind": "damage", "scale": "physical", "power": 1.8, "target": "enemy" },
+        { "id": "skitter", "name": "Skitter", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 5, "duration": 2 }
+      ]
+    },
+    {
+      "id": "dragon",
+      "name": "Dragon",
+      "stats": {
+        "maxHealth": 130,
+        "attack": 16,
+        "defense": 12,
+        "magic": 18
+      },
+      "moveset": [
+        { "id": "flame_breath", "name": "Flame Breath", "kind": "damage", "scale": "magic", "power": 1.8, "target": "enemy" },
+        { "id": "claw_swipe", "name": "Claw Swipe", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
+        { "id": "intimidate", "name": "Intimidate", "kind": "debuff", "scale": "none", "target": "enemy", "stat": "Attack", "delta": -5, "duration": 2 },
+        { "id": "dragon_scales", "name": "Dragon Scales", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 6, "duration": 2 }
+      ]
+    }
+  ]
+}
