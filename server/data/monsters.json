@@ -4,7 +4,7 @@
       "id": "goblin_warrior",
       "name": "Goblin Warrior",
       "stats": {
-        "maxHealth": 60,
+        "health": 60,
         "attack": 8,
         "defense": 4,
         "magic": 2
@@ -20,7 +20,7 @@
       "id": "goblin_mage",
       "name": "Goblin Mage",
       "stats": {
-        "maxHealth": 55,
+        "health": 55,
         "attack": 3,
         "defense": 3,
         "magic": 10
@@ -36,7 +36,7 @@
       "id": "witch",
       "name": "Witch",
       "stats": {
-        "maxHealth": 80,
+        "health": 80,
         "attack": 5,
         "defense": 4,
         "magic": 14
@@ -52,7 +52,7 @@
       "id": "giant_spider",
       "name": "Giant Spider",
       "stats": {
-        "maxHealth": 100,
+        "health": 100,
         "attack": 14,
         "defense": 8,
         "magic": 3
@@ -68,7 +68,7 @@
       "id": "dragon",
       "name": "Dragon",
       "stats": {
-        "maxHealth": 130,
+        "health": 130,
         "attack": 16,
         "defense": 12,
         "magic": 18
