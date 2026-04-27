@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    public BattleManager manager;
     public Move nextMove;
     public Hero hero;
     public Monster currentMonster;
@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
         currentMonster.Stats = monsterData.Stats;
         currentMonster.Moveset= monsterData.Moveset;
         currentMonsterIndex++;
+
+             manager.Init();
+
     }
 
     IEnumerator GetConfigOnStartup()

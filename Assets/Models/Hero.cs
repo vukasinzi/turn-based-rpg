@@ -4,7 +4,21 @@ using System.Collections.Generic;
 public class Hero : Character
 {
     private int xp;
-    public int Level {get;set;} = 1;
+    private int level = 1;
+
+    public int Level
+    {
+        get { return level; }
+        set
+        {
+            level = value;
+            Stats.Attack += 3;
+            Stats.Defense += 3;
+            Stats.Health += 5;
+            Stats.Magic += 3;
+        }
+    }
+
     
     //seter za levelapovanje
     public int XP
@@ -18,6 +32,7 @@ public class Hero : Character
                 Level+= 1;
                 
             }
+            
         }
 
     }

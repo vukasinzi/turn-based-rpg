@@ -790,6 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3576aa77f0147b8b255d4be9ea8443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  manager: {fileID: 43663567}
   hero: {fileID: 0}
   currentMonster: {fileID: 0}
   heroPrefab: {fileID: 7179436208927897494, guid: 55196d5a163c840ca81a98e168668f22, type: 3}

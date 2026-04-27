@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 
     public event Action Death;
 
-    public virtual void ExecuteCorrectMove(Move m, Character target)
+    public virtual bool ExecuteCorrectMove(Move m, Character target)
     {
         switch (m.Kind)
         {
@@ -18,33 +18,34 @@ public class Character : MonoBehaviour
             {
                 int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                 target.TakeDamage(m, stat);
-                break;
+                return true;
             }
             case "damage_debuff":
             {
                 int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                 target.TakeDamage(m, stat);
                 target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
-                break;
+                return true;
             }
             case "damage_heal":
                 target.TakeDamage(m, Stats.Magic);
                 Heal(m, Stats.Magic);
-                break;
+                return true;
             case "buff":
-                ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
-                break;
+                return ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
             case "debuff":
-                target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
-                break;
+                return target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
             case "buff_cost_hp":
-                ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
+                bool applied = ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
+                if (!applied)
+                    return false;
                 Stats.Health -= m.HpCost.Value;
-                break;
+                return true;
             case "heal":
                 Heal(m, Stats.Magic);
-                break;
+                return true;
         }
+        return false;
     }
 
     public virtual void Heal(Move move, int statLevel)
@@ -92,9 +93,14 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void ApplyBuff(Buff buff)
+    public virtual bool ApplyBuff(Buff buff)
     {
         Buffs ??= new List<Buff>();
+        foreach(Buff b in Buffs)
+        {
+            if(b.Stat == buff.Stat)
+                return false;
+        }
         Buffs.Add(buff);
 
         switch (buff.Stat)
@@ -112,6 +118,7 @@ public class Character : MonoBehaviour
                 Stats.Magic += buff.Delta;
                 break;
         }
+        return true;
     }
 
     public virtual void BuffExpire()
