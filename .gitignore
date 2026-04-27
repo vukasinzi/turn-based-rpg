@@ -80,7 +80,7 @@ mono_crash.*
 *.unitypackage
 *.unitypackage.meta
 *.app
-
+Assets/TextMesh Pro/
 # Crashlytics generated file
 crashlytics-build.properties
 
