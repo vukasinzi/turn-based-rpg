@@ -7,14 +7,17 @@ public class BattleManager : MonoBehaviour
     public Hero hero;
     public Monster monster;
 
-
+    bool inProgress = false;
     
     public void OnMoveClicked()
     {
+        if(!inProgress)
+        {
         Init();
-     Move move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];     
+        Move move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];     
        
         StartCoroutine(ExecuteTurn(move));
+        }
     }
    public void Init()
 {
@@ -26,6 +29,8 @@ public class BattleManager : MonoBehaviour
   
     public IEnumerator ExecuteTurn(Move move)
     {
+        inProgress = true;
+        
         hero.ExecuteCorrectMove(move, monster);
         Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Monster HP: {monster.Stats.Health}");
         
@@ -40,6 +45,8 @@ public class BattleManager : MonoBehaviour
         
         hero.BuffExpire();
         monster.BuffExpire();
+
+        inProgress = false;
     }
 
 

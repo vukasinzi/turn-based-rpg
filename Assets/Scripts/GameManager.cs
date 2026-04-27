@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public Config config;
     public int currentMonsterIndex = 0;
 
-    private Dictionary<int, GameObject> monsterPrefabMap = new Dictionary<int, GameObject>();
-
     void Awake()
     {
         if (Instance == null)
@@ -29,12 +27,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
-
-        foreach (var prefab in monsterPrefabs)
-        {
-            Monster m = prefab.GetComponent<Monster>();
-            monsterPrefabMap[m.Id] = prefab;
         }
 
         GameObject heroObj = Instantiate(heroPrefab);
@@ -52,9 +44,10 @@ public class GameManager : MonoBehaviour
         if (currentMonster != null)
             Destroy(currentMonster.gameObject);
 
-        Monster monsterData = config.monsters[currentMonsterIndex];
-        GameObject monsterObj = Instantiate(monsterPrefabMap[monsterData.Id]);
+        MonsterData monsterData = config.monsters[currentMonsterIndex];
+        GameObject monsterObj = Instantiate(monsterPrefabs[currentMonsterIndex]);
         currentMonster = monsterObj.GetComponent<Monster>();
+        currentMonster.Id = monsterData.Id;
         currentMonster.Stats = monsterData.Stats;
         currentMonster.Moveset= monsterData.Moveset;
         currentMonsterIndex++;

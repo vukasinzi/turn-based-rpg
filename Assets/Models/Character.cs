@@ -14,13 +14,19 @@ public class Character : MonoBehaviour
     {
         switch (m.Kind)
         {
-            case "damage":
-                target.TakeDamage(m, Stats.Attack);
+           case "damage":
+            {
+                int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
+                target.TakeDamage(m, stat);
                 break;
+            }
             case "damage_debuff":
-                target.TakeDamage(m, Stats.Attack);
+            {
+                int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
+                target.TakeDamage(m, stat);
                 target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
                 break;
+            }
             case "damage_heal":
                 target.TakeDamage(m, Stats.Magic);
                 Heal(m, Stats.Magic);

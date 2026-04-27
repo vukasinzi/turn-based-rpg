@@ -10,10 +10,10 @@
         "magic": 2
       },
       "moveset": [
-        { "id": 1, "name": "Rusty Blade", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
-        { "id": 2, "name": "Dirty Kick", "kind": "damage_debuff", "scale": "physical", "power": 0.5, "target": "enemy", "stat": "Defense", "delta": -3, "duration": 2 },
+        { "id": 1, "name": "Rusty Blade", "kind": "damage", "scale": "physical", "power": 4.0, "target": "enemy" },
+        { "id": 2, "name": "Dirty Kick", "kind": "damage_debuff", "scale": "physical", "power": 2.5, "target": "enemy", "stat": "Defense", "delta": -3, "duration": 2 },
         { "id": 3, "name": "Frenzy", "kind": "buff", "scale": "none", "target": "self", "stat": "Attack", "delta": 4, "duration": 2 },
-        { "id": 4, "name": "Headbutt", "kind": "damage", "scale": "physical", "power": 1.8, "target": "enemy" }
+        { "id": 4, "name": "Headbutt", "kind": "damage", "scale": "physical", "power": 6.5, "target": "enemy" }
       ]
     },
     {
@@ -26,9 +26,9 @@
         "magic": 10
       },
       "moveset": [
-        { "id": 5, "name": "Firebolt", "kind": "damage", "scale": "magic", "power": 1.0, "target": "enemy" },
+        { "id": 5, "name": "Firebolt", "kind": "damage", "scale": "magic", "power": 4.2, "target": "enemy" },
         { "id": 6, "name": "Arcane Surge", "kind": "buff", "scale": "none", "target": "self", "stat": "Magic", "delta": 5, "duration": 2 },
-        { "id": 7, "name": "Mana Drain", "kind": "damage_debuff", "scale": "magic", "power": 0.5, "target": "enemy", "stat": "Magic", "delta": -3, "duration": 2 },
+        { "id": 7, "name": "Mana Drain", "kind": "damage_debuff", "scale": "magic", "power": 2.6, "target": "enemy", "stat": "Magic", "delta": -3, "duration": 2 },
         { "id": 8, "name": "Hex Shield", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 4, "duration": 2 }
       ]
     },
@@ -42,8 +42,8 @@
         "magic": 14
       },
       "moveset": [
-        { "id": 9, "name": "Shadow Bolt", "kind": "damage", "scale": "magic", "power": 1.5, "target": "enemy" },
-        { "id": 10, "name": "Drain Life", "kind": "damage_heal", "scale": "magic", "power": 0.6, "target": "enemy" },
+        { "id": 9, "name": "Shadow Bolt", "kind": "damage", "scale": "magic", "power": 5.8, "target": "enemy" },
+        { "id": 10, "name": "Drain Life", "kind": "damage_heal", "scale": "magic", "power": 2.8, "target": "enemy" },
         { "id": 11, "name": "Curse", "kind": "debuff", "scale": "none", "target": "enemy", "stat": "Attack", "delta": -4, "duration": 2 },
         { "id": 12, "name": "Dark Pact", "kind": "buff_cost_hp", "scale": "none", "target": "self", "stat": "Magic", "delta": 6, "duration": 2, "hpCost": 10 }
       ]
@@ -58,9 +58,9 @@
         "magic": 3
       },
       "moveset": [
-        { "id": 13, "name": "Bite", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
-        { "id": 14, "name": "Web Throw", "kind": "damage_debuff", "scale": "physical", "power": 0.5, "target": "enemy", "stat": "Defense", "delta": -4, "duration": 2 },
-        { "id": 15, "name": "Pounce", "kind": "damage", "scale": "physical", "power": 1.8, "target": "enemy" },
+        { "id": 13, "name": "Bite", "kind": "damage", "scale": "physical", "power": 4.5, "target": "enemy" },
+        { "id": 14, "name": "Web Throw", "kind": "damage_debuff", "scale": "physical", "power": 2.5, "target": "enemy", "stat": "Defense", "delta": -4, "duration": 2 },
+        { "id": 15, "name": "Pounce", "kind": "damage", "scale": "physical", "power": 7.0, "target": "enemy" },
         { "id": 16, "name": "Skitter", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 5, "duration": 2 }
       ]
     },
@@ -74,8 +74,8 @@
         "magic": 18
       },
       "moveset": [
-        { "id": 17, "name": "Flame Breath", "kind": "damage", "scale": "magic", "power": 1.8, "target": "enemy" },
-        { "id": 18, "name": "Claw Swipe", "kind": "damage", "scale": "physical", "power": 1.0, "target": "enemy" },
+        { "id": 17, "name": "Flame Breath", "kind": "damage", "scale": "magic", "power": 7.5, "target": "enemy" },
+        { "id": 18, "name": "Claw Swipe", "kind": "damage", "scale": "physical", "power": 4.8, "target": "enemy" },
         { "id": 19, "name": "Intimidate", "kind": "debuff", "scale": "none", "target": "enemy", "stat": "Attack", "delta": -5, "duration": 2 },
         { "id": 20, "name": "Dragon Scales", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 6, "duration": 2 }
       ]

@@ -26,12 +26,20 @@ public class Hero : Character
     public List<Move> AllMoves{get;set;}
      void Awake()
     {
+        Stats = new Stats
+        {
+            Health = 50,
+            Attack = 10,
+            Defense = 6,
+            Magic = 6
+        };
+
         List<Move> Moveset = new List<Move>
         {
-            new Move { Id = "slash", Name = "Slash", Kind = "damage", Scale = "physical", Power = 1.0f, Target = "enemy" },
-            new Move { Id = "shield_up", Name = "Shield Up", Kind = "buff", Scale = "none", Target = "self", Stat = "Defense", Delta = 4, Duration = 2 },
-            new Move { Id = "battle_cry", Name = "Battle Cry", Kind = "buff", Scale = "none", Target = "self", Stat = "Attack", Delta = 4, Duration = 2 },
-            new Move { Id = "second_wind", Name = "Second Wind", Kind = "heal", Scale = "magic", Power = 1.0f, Target = "self" }
+            new Move { Id = 1, Name = "Slash", Kind = "damage", Scale = "physical", Power = 7.0f, Target = "enemy" },
+            new Move { Id = 2, Name = "Shield Up", Kind = "buff", Scale = "none", Target = "self", Stat = "Defense", Delta = 10, Duration = 2 },
+            new Move { Id = 3, Name = "Battle Cry", Kind = "buff", Scale = "none", Target = "self", Stat = "Attack", Delta = 10, Duration = 2 },
+            new Move { Id = 4, Name = "Second Wind", Kind = "heal", Scale = "magic", Power = 3.0f, Target = "self" }
         };
         AllMoves = new List<Move>(Moveset);
         Buffs = new List<Buff>();
