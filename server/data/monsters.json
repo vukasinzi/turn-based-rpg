@@ -11,9 +11,9 @@
       },
       "moveset": [
         { "id": 1, "name": "Rusty Blade", "kind": "damage", "scale": "physical", "power": 4.0, "target": "enemy" },
-        { "id": 2, "name": "Dirty Kick", "kind": "damage_debuff", "scale": "physical", "power": 2.5, "target": "enemy", "stat": "Defense", "delta": -3, "duration": 2 },
-        { "id": 3, "name": "Frenzy", "kind": "buff", "scale": "none", "target": "self", "stat": "Attack", "delta": 4, "duration": 2 },
-        { "id": 4, "name": "Headbutt", "kind": "damage", "scale": "physical", "power": 6.5, "target": "enemy" }
+        { "id": 2, "name": "Dirty Kick", "kind": "damage_debuff", "scale": "physical", "power": 2, "target": "enemy", "stat": "Defense", "delta": -6, "duration": 2 },
+        { "id": 3, "name": "Frenzy", "kind": "buff", "scale": "none", "target": "self", "stat": "Attack", "delta": 6, "duration": 2 },
+        { "id": 4, "name": "Headbutt", "kind": "damage", "scale": "physical", "power": 6.0, "target": "enemy" }
       ]
     },
     {
@@ -27,7 +27,7 @@
       },
       "moveset": [
         { "id": 5, "name": "Firebolt", "kind": "damage", "scale": "magic", "power": 4.2, "target": "enemy" },
-        { "id": 6, "name": "Arcane Surge", "kind": "buff", "scale": "none", "target": "self", "stat": "Magic", "delta": 5, "duration": 2 },
+        { "id": 6, "name": "Arcane Surge", "kind": "buff", "scale": "none", "target": "self", "stat": "Magic", "delta": 6, "duration": 2 },
         { "id": 7, "name": "Mana Drain", "kind": "damage_debuff", "scale": "magic", "power": 2.6, "target": "enemy", "stat": "Magic", "delta": -3, "duration": 2 },
         { "id": 8, "name": "Hex Shield", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 4, "duration": 2 }
       ]

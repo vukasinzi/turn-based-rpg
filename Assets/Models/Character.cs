@@ -47,12 +47,13 @@ public class Character : MonoBehaviour
         }
         return false;
     }
-
     public virtual void Heal(Move move, int statLevel)
     {
+       
         float calc = move.Power * (1 + (float)statLevel / 10f);
         int healAmount = Mathf.RoundToInt(calc);
         Stats.Health += healAmount;
+        
     }
 
     public virtual void TakeDamage(Move move, int statLevel)
