@@ -13,7 +13,7 @@ public class BattleManager : MonoBehaviour
     {
         if (!inProgress)
         {
-            Move move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];
+            Move move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
             StartCoroutine(ExecuteTurn(move));
         }
     }
@@ -47,7 +47,7 @@ public class BattleManager : MonoBehaviour
                 //sada imamo samo neki fallback koji u sustini ako izbaci nevalidan potez, sam izabere drugi.
             while (!hero.ExecuteCorrectMove(move, monster))
             {
-                move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];
+                move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
             }
 
             Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
