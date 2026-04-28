@@ -1,5 +1,7 @@
 
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class Hero : Character
 {
@@ -19,27 +21,27 @@ public class Hero : Character
         }
     }
 
-    
+
     //seter za levelapovanje
     public int XP
     {
-        get{return xp;}
+        get { return xp; }
         set
         {
             xp = value;
-             while(xp >= LevelUpXP)
+            while (xp >= LevelUpXP)
             {
-                Level+= 1;
-                
+                Level += 1;
+
             }
-            
+
         }
 
     }
-    public int LevelUpXP => Level*100;
-    
-    public List<Move> AllMoves{get;set;}
-     void Awake()
+    public int LevelUpXP => Level * 100;
+
+    public List<Move> AllMoves { get; set; }
+    void Awake()
     {
         Stats = new Stats
         {
@@ -59,5 +61,6 @@ public class Hero : Character
         AllMoves = new List<Move>(Moveset);
         Buffs = new List<Buff>();
     }
-    
+   
+
 }

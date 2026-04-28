@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -12,31 +13,41 @@ public class Character : MonoBehaviour
 
     public virtual bool ExecuteCorrectMove(Move m, Character target)
     {
+        Buff buff = new Buff
+        {
+            Name = m.Name ?? "",
+            Stat = m.Stat ?? "",
+            Delta = m.Delta ?? 0,
+            Duration = m.Duration ?? 0
+        };
+
         switch (m.Kind)
         {
-           case "damage":
-            {
-                int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
-                target.TakeDamage(m, stat);
-                return true;
-            }
+
+            case "damage":
+                {
+                    int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
+                    target.TakeDamage(m, stat);
+                    return true;
+                }
             case "damage_debuff":
-            {
-                int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
-                target.TakeDamage(m, stat);
-                target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
-                return true;
-            }
+                {
+                    int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
+                    target.TakeDamage(m, stat);
+
+                    target.ApplyBuff(buff);
+                    return true;
+                }
             case "damage_heal":
                 target.TakeDamage(m, Stats.Magic);
                 Heal(m, Stats.Magic);
                 return true;
             case "buff":
-                return ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
+                return ApplyBuff(buff);
             case "debuff":
-                return target.ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
+                return target.ApplyBuff(buff);
             case "buff_cost_hp":
-                bool applied = ApplyBuff(new Buff { Stat = m.Stat, Delta = m.Delta.Value, Duration = m.Duration.Value });
+                bool applied = ApplyBuff(buff);
                 if (!applied)
                     return false;
                 Stats.Health -= m.HpCost.Value;
@@ -47,13 +58,12 @@ public class Character : MonoBehaviour
         }
         return false;
     }
+
     public virtual void Heal(Move move, int statLevel)
     {
-       
         float calc = move.Power * (1 + (float)statLevel / 10f);
         int healAmount = Mathf.RoundToInt(calc);
         Stats.Health += healAmount;
-        
     }
 
     public virtual void TakeDamage(Move move, int statLevel)
@@ -63,28 +73,21 @@ public class Character : MonoBehaviour
         switch (scale)
         {
             case "magic":
-            {
-                float calc = move.Power * (1 + (float)statLevel / 10f);
-                int finalDamage = Mathf.RoundToInt(calc);
-                if (finalDamage < 0)
+                {
+                    float calc = move.Power * (1 + (float)statLevel / 10f);
+                    int finalDamage = Mathf.RoundToInt(calc);
+                    if (finalDamage < 0) break;
+                    Stats.Health -= finalDamage;
                     break;
-                
-
-                Stats.Health -= finalDamage;
-                break;
-            }
+                }
             case "physical":
-            {
-                float calc = move.Power * (1 + (float)statLevel / 10f - Stats.Defense / 10f);
-                int finalDamage = Mathf.RoundToInt(calc);
-                if (finalDamage < 0)
+                {
+                    float calc = move.Power * (1 + (float)statLevel / 10f - Stats.Defense / 10f);
+                    int finalDamage = Mathf.RoundToInt(calc);
+                    if (finalDamage < 0) break;
+                    Stats.Health -= finalDamage;
                     break;
-                
-
-                Stats.Health -= finalDamage;
-                break;
-            }
-           
+                }
         }
 
         if (Stats.Health <= 0)
@@ -97,11 +100,17 @@ public class Character : MonoBehaviour
     public virtual bool ApplyBuff(Buff buff)
     {
         Buffs ??= new List<Buff>();
-        foreach(Buff b in Buffs)
+
+        buff.Duration += 1;
+        foreach (Buff b in Buffs)
         {
-            if(b.Stat == buff.Stat)
-                return false;
+            if (b.Name == buff.Name)
+            {
+                b.Duration += buff.Duration;
+                return true;
+            }
         }
+
         Buffs.Add(buff);
 
         switch (buff.Stat)
@@ -124,23 +133,17 @@ public class Character : MonoBehaviour
 
     public virtual void BuffExpire()
     {
-        if (Buffs == null || Buffs.Count == 0)
-        {
-            return;
-        }
+        if (Buffs == null || Buffs.Count == 0) return;
 
         List<Buff> expired = new List<Buff>();
 
         foreach (Buff b in Buffs)
         {
-            if (b.Stat == "Health")
-                continue;
-            
+            if (b.Stat == "Health") continue;
 
             b.Duration--;
             if (b.Duration <= 0)
                 expired.Add(b);
-            
         }
 
         foreach (Buff b in expired)
@@ -148,15 +151,9 @@ public class Character : MonoBehaviour
             Buffs.Remove(b);
             switch (b.Stat)
             {
-                case "Attack":
-                    Stats.Attack -= b.Delta;
-                    break;
-                case "Defense":
-                    Stats.Defense -= b.Delta;
-                    break;
-                case "Magic":
-                    Stats.Magic -= b.Delta;
-                    break;
+                case "Attack": Stats.Attack -= b.Delta; break;
+                case "Defense": Stats.Defense -= b.Delta; break;
+                case "Magic": Stats.Magic -= b.Delta; break;
             }
         }
     }

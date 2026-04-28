@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
     public BattleManager manager;
     public Move nextMove;
     public Hero hero;
@@ -49,11 +50,10 @@ public class GameManager : MonoBehaviour
         currentMonster = monsterObj.GetComponent<Monster>();
         currentMonster.Id = monsterData.Id;
         currentMonster.Stats = monsterData.Stats;
-        currentMonster.Moveset= monsterData.Moveset;
+        currentMonster.Moveset = monsterData.Moveset;
         currentMonsterIndex++;
 
-             manager.Init();
-
+        manager.Init();
     }
 
     IEnumerator GetConfigOnStartup()
@@ -73,13 +73,19 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GetNextMove()
     {
-        string body = JsonConvert.SerializeObject(new { MonsterId = currentMonster.Id });
+        string body = JsonConvert.SerializeObject(new
+        {
+            MonsterId = currentMonster.Id,
+            MonsterBuffs = currentMonster.Buffs ?? new List<Buff>(),
+            HeroBuffs = hero.Buffs ?? new List<Buff>()
+        });
+
         using var request = UnityWebRequest.Post("http://localhost:5267/api/game/potez", body, "application/json");
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("Ne ucitava potez lepo");
+            Debug.Log($"Status: {request.responseCode} | Error: {request.downloadHandler.text}");    
             yield break;
         }
 

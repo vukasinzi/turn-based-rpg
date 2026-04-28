@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-
     public Hero hero;
     public Monster monster;
 
@@ -15,15 +14,16 @@ public class BattleManager : MonoBehaviour
         if (!inProgress)
         {
             Move move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];
-
             StartCoroutine(ExecuteTurn(move));
         }
     }
+
     void OnDestroy()
     {
         if (hero != null) hero.Death -= OnHeroDeath;
         if (monster != null) monster.Death -= OnMonsterDeath;
     }
+
     public void Init()
     {
         if (hero != null) hero.Death -= OnHeroDeath;
@@ -41,8 +41,10 @@ public class BattleManager : MonoBehaviour
         inProgress = true;
         try
         {
-             hero.BuffExpire();
+            hero.BuffExpire();
             monster.BuffExpire();
+                //izmena, prethodna verzija je podrazumevala reroll na frontu slanjem zahteva backu,
+                //sada imamo samo neki fallback koji u sustini ako izbaci nevalidan potez, sam izabere drugi.
             while (!hero.ExecuteCorrectMove(move, monster))
             {
                 move = hero.AllMoves[Random.Range(0, hero.AllMoves.Count)];
@@ -51,18 +53,12 @@ public class BattleManager : MonoBehaviour
             Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
 
-            Move monsterMove;
-            do
-            {
-                yield return StartCoroutine(GameManager.Instance.GetNextMove());
-                monsterMove = GameManager.Instance.nextMove;
-            }
-            while (!monster.ExecuteCorrectMove(monsterMove, hero));
+            yield return StartCoroutine(GameManager.Instance.GetNextMove());
+            Move monsterMove = GameManager.Instance.nextMove;
+            monster.ExecuteCorrectMove(monsterMove, hero);
 
             Debug.Log($"Monster koristi {monsterMove.Name} | Kind: {monsterMove.Kind} | Scale: {monsterMove.Scale} | Power: {monsterMove.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
-
-           
         }
         finally
         {
@@ -76,6 +72,7 @@ public class BattleManager : MonoBehaviour
         Destroy(hero);
         OnDestroy();
     }
+
     void OnMonsterDeath()
     {
         Debug.Log("Victory");
@@ -84,5 +81,4 @@ public class BattleManager : MonoBehaviour
         hero.Stats.Health = 50;
         hero.XP += 100;
     }
-
 }
