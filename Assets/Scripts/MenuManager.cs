@@ -8,6 +8,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
     public Config config;
     public Image white;
     public float waitTime = 1f;
@@ -17,9 +18,20 @@ public class MenuManager : MonoBehaviour
 
     public GameObject MapMenuPanel;
     public GameObject MainMenuPanel;
+    public GameObject InventoryMenuPanel;
 
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         StartCoroutine(LoadConfig());
 
         if (white != null)
@@ -28,10 +40,17 @@ public class MenuManager : MonoBehaviour
             StartCoroutine(FillBar());
         }
     }
+    public void InventoryMenu()
+    {
+        InventoryMenuPanel.SetActive(true);
+        MainMenuPanel.SetActive(false);
+        MapMenuPanel.SetActive(false);
+    }
     public void MapMenu()
     {
         MapMenuPanel.SetActive(true);
         MainMenuPanel.SetActive(false);
+        InventoryMenuPanel.SetActive(false);
 
         GenerateMapButtons();
     }

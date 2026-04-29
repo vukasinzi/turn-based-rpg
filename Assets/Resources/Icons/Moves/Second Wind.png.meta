@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: f77db4ee22fb536a7841b41e5d639520
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6550477489118353522
+    second: Second Wind_0
+  - first:
+      213: 2381179549026364623
+    second: Second Wind_1
+  - first:
+      213: 9019636971266914564
+    second: Second Wind_2
+  - first:
+      213: 6674949751201205743
+    second: Second Wind_3
+  - first:
+      213: -3301778257401499929
+    second: Second Wind_4
+  - first:
+      213: -2627132278308199207
+    second: Second Wind_5
+  - first:
+      213: -4064184508980554449
+    second: Second Wind_6
+  - first:
+      213: 2656297943684711031
+    second: Second Wind_7
+  - first:
+      213: 5673152232724974956
+    second: Second Wind_8
+  - first:
+      213: 3784085453414502052
+    second: Second Wind_9
+  - first:
+      213: 8191450013978200011
+    second: Second Wind_10
+  - first:
+      213: -1190037885324294979
+    second: Second Wind_11
+  - first:
+      213: -6204426781954627929
+    second: Second Wind_12
+  - first:
+      213: -5084937272304057969
+    second: Second Wind_13
+  - first:
+      213: 961907117914084077
+    second: Second Wind_14
+  - first:
+      213: 8293382528334723467
+    second: Second Wind_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Second Wind_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 247
+        width: 121
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8768e7fd670815a0800000000000000
+      internalID: -6550477489118353522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 257
+        width: 133
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc242e0f26ab0120800000000000000
+      internalID: 2381179549026364623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_2
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 151
+        width: 213
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409385b89003c2d70800000000000000
+      internalID: 9019636971266914564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 123
+        width: 100
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed0eedee6f22ac50800000000000000
+      internalID: 6674949751201205743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_4
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 139
+        width: 125
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eea9702b2abd22d0800000000000000
+      internalID: -3301778257401499929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 106
+        width: 61
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d42a7dac1d8a8bd0800000000000000
+      internalID: -2627132278308199207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_6
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 124
+        width: 50
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f259198d8bd1997c0800000000000000
+      internalID: -4064184508980554449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_7
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 141
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7728de6f7e01dd420800000000000000
+      internalID: 2656297943684711031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_8
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 59
+        width: 95
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6d4944e5e51bbe40800000000000000
+      internalID: 5673152232724974956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_9
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 61
+        width: 56
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ae8e72cba5c38430800000000000000
+      internalID: 3784085453414502052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_10
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 77
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc70a863360eda170800000000000000
+      internalID: 8191450013978200011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_11
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 93
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db40dff29d22c7fe0800000000000000
+      internalID: -1190037885324294979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_12
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 31
+        width: 55
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a6acaad6b275e9a0800000000000000
+      internalID: -6204426781954627929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_13
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 23
+        width: 51
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f814c23fd7cae69b0800000000000000
+      internalID: -5084937272304057969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_14
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 40
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de250366d61695d00800000000000000
+      internalID: 961907117914084077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Second Wind_15
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 55
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8972d32873081370800000000000000
+      internalID: 8293382528334723467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Second Wind_0: -6550477489118353522
+      Second Wind_1: 2381179549026364623
+      Second Wind_10: 8191450013978200011
+      Second Wind_11: -1190037885324294979
+      Second Wind_12: -6204426781954627929
+      Second Wind_13: -5084937272304057969
+      Second Wind_14: 961907117914084077
+      Second Wind_15: 8293382528334723467
+      Second Wind_2: 9019636971266914564
+      Second Wind_3: 6674949751201205743
+      Second Wind_4: -3301778257401499929
+      Second Wind_5: -2627132278308199207
+      Second Wind_6: -4064184508980554449
+      Second Wind_7: 2656297943684711031
+      Second Wind_8: 5673152232724974956
+      Second Wind_9: 3784085453414502052
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

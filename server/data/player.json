@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "name": "Knight",
+  "level": 1,
+  "xp": 0,
+  "stats": {
+    "health": 50,
+    "attack": 8,
+    "defense": 4,
+    "magic": 6
+  },
+  "allMoves": [
+    { "id": 1, "name": "Slash", "kind": "damage", "scale": "physical", "power": 6.0, "target": "enemy" },
+    { "id": 2, "name": "Shield Up", "kind": "buff", "scale": "none", "target": "self", "stat": "Defense", "delta": 6, "duration": 2 },
+    { "id": 3, "name": "Battle Cry", "kind": "buff", "scale": "none", "target": "self", "stat": "Attack", "delta": 6, "duration": 2 },
+    { "id": 4, "name": "Second Wind", "kind": "heal", "scale": "magic", "power": 4.0, "target": "self" }
+  ],
+  "equippedMoveIds": [1, 2, 3, 4],
+  "equippedMoves": []
+}

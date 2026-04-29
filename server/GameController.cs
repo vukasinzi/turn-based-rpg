@@ -11,6 +11,7 @@ namespace server;
 public class GameController : ControllerBase
 {
     private readonly Config config;
+    private readonly HeroDTO hero;
 
     public GameController()
     {
@@ -20,12 +21,26 @@ public class GameController : ControllerBase
         {
             PropertyNameCaseInsensitive = true
         });
+        path = Path.Combine(Directory.GetCurrentDirectory(), "data/player.json");
+         json = System.IO.File.ReadAllText(path);
+         hero = JsonSerializer.Deserialize<HeroDTO>(json, new JsonSerializerOptions
+         {
+             PropertyNameCaseInsensitive = true
+         });
+
+
     }
 
     [HttpGet("config")]
     public IActionResult ReturnConfig()
     {
         return Ok(config);
+    }
+
+    [HttpGet("player")]
+    public IActionResult ReturnPlayer()
+    {
+        return Ok(hero);
     }
 
     [HttpPost("potez")]
