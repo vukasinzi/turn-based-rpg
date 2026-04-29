@@ -26,8 +26,7 @@ public class EquipManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);}
-
+    }
     void Start()
     {
         StartCoroutine(Load());

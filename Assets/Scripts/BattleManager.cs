@@ -1,6 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -80,19 +84,65 @@ public class BattleManager : MonoBehaviour
 
     void OnHeroDeath()
     {
+        inProgress = true;
         Debug.Log("Defeat");
-        Destroy(hero);
         OnDestroy();
+        Destroy(hero.gameObject);
+        GameManager.Instance.currentMonster = null;
+        GameManager.Instance.hero = null;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     void OnMonsterDeath()
     {
+        inProgress = true;
+        OnDestroy();
         Debug.Log("Victory");
-        Destroy(monster);
-        GameManager.Instance.SpawnMonster();
-        hero.Stats.Health = 50;
-        hero.XP += 100;
+        StartCoroutine(SavePlayerAndReturn());
+
+
     }
+    HeroDTO h;
+    IEnumerator LoadHero()
+    {
+        using var request = UnityWebRequest.Get("http://localhost:5267/api/game/player");
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+            yield break;
+
+        h = JsonConvert.DeserializeObject<HeroDTO>(request.downloadHandler.text);
+
+        h.equippedMoves = new List<Move>();
+    }
+    IEnumerator SavePlayerAndReturn()
+    {
+        yield return StartCoroutine(LoadHero());
+
+        var validMoves = GameManager.Instance.currentMonster.Moveset
+        .Where(m => !h.allMoves.Any(e => e.Name == m.Name))
+        .ToList();
+        Move randomMove;
+        if (validMoves.Count != 0)
+        {
+            randomMove = validMoves[Random.Range(0, validMoves.Count)];
+            randomMove.Id = h.allMoves.Count > 0 ? h.allMoves.Max(m => m.Id) + 1 : 1;
+            h.allMoves.Add(randomMove);
+        }
+
+        h.AddXpAndLevelUp(100);
+        h.equippedMoveIds = hero.Moveset.Select(m => m.Id).ToList();
+
+        string jsonData = JsonConvert.SerializeObject(h);
+
+        using var request = UnityWebRequest.Post("http://localhost:5267/api/game/save", jsonData, "application/json");
+        yield return request.SendWebRequest();
+
+        GameManager.Instance.currentMonster = null;
+        GameManager.Instance.hero = null;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
     void Update()
     {
         if (!inProgress)

@@ -31,6 +31,18 @@ public class GameController : ControllerBase
 
     }
 
+    [HttpPost("save")]
+    public IActionResult SaveHero([FromBody] HeroDTO hero)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "data/player.json");
+
+        var json = JsonSerializer.Serialize(hero, new JsonSerializerOptions { WriteIndented = false });
+
+
+        System.IO.File.WriteAllText(path, json);
+
+        return Ok();
+    }
     [HttpGet("config")]
     public IActionResult ReturnConfig()
     {

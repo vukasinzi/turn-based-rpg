@@ -12,4 +12,18 @@ public class HeroDTO
     public List<Move> equippedMoves { get; set; }
 
     public void MapIdsToMoves() => equippedMoves = allMoves.Where(x => equippedMoveIds.Contains(x.Id)).ToList();
+
+    public void AddXpAndLevelUp(int amount)
+    {
+        xp += amount;
+
+        while (xp >= level * 100)
+        {
+            level += 1;
+            stats.Attack += 1;
+            stats.Defense += 1;
+            stats.Health += 3;
+            stats.Magic += 1;
+        }
+    }
 }

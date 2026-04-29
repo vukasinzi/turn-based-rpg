@@ -73,17 +73,21 @@ public class Character : MonoBehaviour
         switch (scale)
         {
             case "magic":
-                {
-                    float calc = move.Power * (1 + (float)statLevel / 10f);
-                    int finalDamage = Mathf.RoundToInt(calc);
+                {//ne koristim nula da ne pukne ako je stat 0 
+                //takdodje napomena, log je ln
+                    float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
+                    float calc = move.Power * (1 + attackBonus);
+                    int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));//safeguard
                     if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
                     break;
                 }
             case "physical":
                 {
-                    float calc = move.Power * (1 + (float)statLevel / 10f - Stats.Defense / 10f);
-                    int finalDamage = Mathf.RoundToInt(calc);
+                    float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
+                    float defenseReduction = Mathf.Log(1 + Stats.Defense) / Mathf.Log(11);
+                    float calc = move.Power * (1 + attackBonus - defenseReduction);
+                    int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));
                     if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
                     break;
