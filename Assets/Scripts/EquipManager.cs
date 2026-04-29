@@ -73,8 +73,7 @@ public class EquipManager : MonoBehaviour
 
             var img = moveObj.GetComponent<Image>();
             if (img != null)
-                img.sprite = Resources.Load<Sprite>($"Icons/Moves/{m.Name}")
-                             ?? Resources.Load<Sprite>("Icons/switch-weapon");
+                img.sprite = Resources.Load<Sprite>($"Icons/Moves/{m.Name}");
 
             Move captured = m;
             moveObj.GetComponent<Button>().onClick.AddListener(() => onClick(captured));

@@ -1,21 +1,19 @@
 using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
     public Hero hero;
     public Monster monster;
-
+    public GameObject moveIconPrefab;
+    public Transform equippedLayout;
     bool inProgress = false;
 
     public void OnMoveClicked()
     {
-        if (!inProgress)
-        {
-            Move move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
-            StartCoroutine(ExecuteTurn(move));
-        }
+
     }
 
     void OnDestroy()
@@ -34,6 +32,20 @@ public class BattleManager : MonoBehaviour
 
         hero.Death += OnHeroDeath;
         monster.Death += OnMonsterDeath;
+        equippedLayout.GetComponent<HorizontalLayoutGroup>().spacing = 70f;
+        foreach (Transform child in equippedLayout)
+            Destroy(child.gameObject);
+        int i = 0;
+        foreach (var move in hero.Moveset)
+        {
+            GameObject imageObj = Instantiate(moveIconPrefab, equippedLayout);
+            var text = imageObj.GetComponentInChildren<TextMeshProUGUI>();
+            i++;
+            text.text = i + "." + move.Name;
+            var img = imageObj.GetComponent<Image>();
+            if (img != null)
+                img.sprite = Resources.Load<Sprite>($"Icons/Moves/{move.Name}");
+        }
     }
 
     public IEnumerator ExecuteTurn(Move move)
@@ -43,8 +55,8 @@ public class BattleManager : MonoBehaviour
         {
             hero.BuffExpire();
             monster.BuffExpire();
-                //izmena, prethodna verzija je podrazumevala reroll na frontu slanjem zahteva backu,
-                //sada imamo samo neki fallback koji u sustini ako izbaci nevalidan potez, sam izabere drugi.
+            //izmena, prethodna verzija je podrazumevala reroll na frontu slanjem zahteva backu,
+            //sada imamo samo neki fallback koji u sustini ako izbaci nevalidan potez, sam izabere drugi.
             while (!hero.ExecuteCorrectMove(move, monster))
             {
                 move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
@@ -80,5 +92,15 @@ public class BattleManager : MonoBehaviour
         GameManager.Instance.SpawnMonster();
         hero.Stats.Health = 50;
         hero.XP += 100;
+    }
+    void Update()
+    {
+        if (!inProgress)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) StartCoroutine(ExecuteTurn(hero.Moveset[0]));
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) StartCoroutine(ExecuteTurn(hero.Moveset[1]));
+            else if (Input.GetKeyDown(KeyCode.Alpha3)) StartCoroutine(ExecuteTurn(hero.Moveset[2]));
+            else if (Input.GetKeyDown(KeyCode.Alpha4)) StartCoroutine(ExecuteTurn(hero.Moveset[3]));
+        }
     }
 }

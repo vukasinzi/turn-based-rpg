@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         MonsterDTO monsterDTO = config.monsters.Find(m => m.Id == selectedMonsterId);
         int index = config.monsters.IndexOf(monsterDTO);
 
-        GameObject monsterObj = Instantiate(monsterPrefabs[index], monsterSpawnPoint.position, Quaternion.identity);
+        GameObject monsterObj = Instantiate(monsterPrefabs[index],monsterSpawnPoint.position,Quaternion.identity);
         currentMonster = monsterObj.GetComponent<Monster>();
         currentMonster.Stats = monsterDTO.Stats;
         currentMonster.Id = monsterDTO.Id;
