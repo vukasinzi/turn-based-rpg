@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using TMPro;
+
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -20,12 +22,13 @@ public class MenuManager : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject InventoryMenuPanel;
 
+    private MonsterDTO selectedMonster;
+
     void Start()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -48,6 +51,11 @@ public class MenuManager : MonoBehaviour
     }
     public void MapMenu()
     {
+        if (EquipManager.Instance != null && EquipManager.Instance.hero.equippedMoves.Count < 4)
+        {
+            Debug.Log("Nema opremljenih poteza!");
+            return;
+        }
         MapMenuPanel.SetActive(true);
         MainMenuPanel.SetActive(false);
         InventoryMenuPanel.SetActive(false);
@@ -81,21 +89,62 @@ public class MenuManager : MonoBehaviour
 
         white.fillAmount = 1f;
     }
+    void Clear(Transform parent)
+    {
+        for (int i = parent.childCount - 1; i >= 0; i--)
+            Destroy(parent.GetChild(i).gameObject);
+    }
     void GenerateMapButtons()
     {
+        Clear(mapButtonContainer);
+
         var layout = mapButtonContainer.GetComponent<HorizontalLayoutGroup>();
         if (layout != null) layout.spacing = 80f;
 
         for (int i = 0; i < config.monsters.Count; i++)
         {
             GameObject newButton = Instantiate(mapButtonPrefab, mapButtonContainer);
-            newButton.GetComponentInChildren<TextMeshProUGUI>().text = config.monsters[i].Name;
 
+            newButton.GetComponentInChildren<TextMeshProUGUI>().text = config.monsters[i].Name;
+            var monster = config.monsters[i];
+            newButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                selectedMonster = monster;
+                Play();
+            });
             Sprite icon = Resources.Load<Sprite>("Icons/" + config.monsters[i].Name);
             if (icon != null)
                 newButton.GetComponent<Image>().sprite = icon;
-            else
-                Debug.Log("Nema ikonice: " + config.monsters[i].Name);
         }
     }
+    public void Play()
+    {
+        if (EquipManager.Instance == null || EquipManager.Instance.hero == null || config == null)
+        {
+            Debug.Log("Nedostaju podaci za start borbe!");
+            return;
+        }
+
+        var dto = EquipManager.Instance.hero;
+        var monster = selectedMonster;
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name != "SampleScene") return;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            if (GameManager.Instance == null)
+            {
+                Debug.Log("GameManager nije pronađen u SampleScene!");
+                return;
+            }
+
+            GameManager.Instance.SendAll(config, dto, monster);
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene("SampleScene");
+    }
+
+
 }

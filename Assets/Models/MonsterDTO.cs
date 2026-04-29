@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class MonsterData
+public class MonsterDTO
 {
     public int Id { get; set; }
     public string Name { get; set; }

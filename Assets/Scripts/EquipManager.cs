@@ -14,7 +14,20 @@ public class EquipManager : MonoBehaviour
     public Transform allMovesLayout;
     public Transform equippedLayout;
 
-    HeroDTO hero;
+    public HeroDTO hero;
+    public static EquipManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);}
+
     void Start()
     {
         StartCoroutine(Load());
@@ -26,7 +39,7 @@ public class EquipManager : MonoBehaviour
 
 
     }
-    void Clear(Transform parent)
+    public void Clear(Transform parent)
     {
         for (int i = parent.childCount - 1; i >= 0; i--)
             Destroy(parent.GetChild(i).gameObject);
@@ -44,29 +57,29 @@ public class EquipManager : MonoBehaviour
 
         hero.equippedMoves ??= new List<Move>();
 
-       hero.allMoves = hero.allMoves.Except(hero.equippedMoves).ToList();
+        hero.allMoves = hero.allMoves.Except(hero.equippedMoves).ToList();
 
-      RenderMoves(allMovesLayout, hero.allMoves, OnClickAllMoves);
+        RenderMoves(allMovesLayout, hero.allMoves, OnClickAllMoves);
         RenderMoves(equippedLayout, hero.equippedMoves, OnClickEquippedMoves);
     }
 
-   void RenderMoves(Transform layout, List<Move> moves, Action<Move> onClick)
-{
-    Clear(layout);
-    foreach (var m in moves)
+    void RenderMoves(Transform layout, List<Move> moves, Action<Move> onClick)
     {
-        var moveObj = Instantiate(moveButtonPrefab, layout);
-        moveObj.GetComponentInChildren<TextMeshProUGUI>().text = m.Name;
-        
-        var img = moveObj.GetComponent<Image>();
-        if (img != null)
-            img.sprite = Resources.Load<Sprite>($"Icons/Moves/{m.Name}") 
-                         ?? Resources.Load<Sprite>("Icons/switch-weapon");
-        
-        Move captured = m;
-        moveObj.GetComponent<Button>().onClick.AddListener(() => onClick(captured));
+        Clear(layout);
+        foreach (var m in moves)
+        {
+            var moveObj = Instantiate(moveButtonPrefab, layout);
+            moveObj.GetComponentInChildren<TextMeshProUGUI>().text = m.Name;
+
+            var img = moveObj.GetComponent<Image>();
+            if (img != null)
+                img.sprite = Resources.Load<Sprite>($"Icons/Moves/{m.Name}")
+                             ?? Resources.Load<Sprite>("Icons/switch-weapon");
+
+            Move captured = m;
+            moveObj.GetComponent<Button>().onClick.AddListener(() => onClick(captured));
+        }
     }
-}
 
     void OnClickEquippedMoves(Move move)
     {
@@ -89,5 +102,5 @@ public class EquipManager : MonoBehaviour
         RenderMoves(allMovesLayout, hero.allMoves, OnClickAllMoves);
         RenderMoves(equippedLayout, hero.equippedMoves, OnClickEquippedMoves);
     }
-   
+
 }
