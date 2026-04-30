@@ -13,8 +13,11 @@ public class BattleManager : MonoBehaviour
     public Monster monster;
     public GameObject moveIconPrefab;
     public Transform equippedLayout;
+    public Image HeroHealth;
+    public Image MonsterHealth;
     bool inProgress = false;
-
+    private int MaxHeroHealth;
+    private int MaxMonsterHealth;
     public void OnMoveClicked()
     {
 
@@ -50,6 +53,11 @@ public class BattleManager : MonoBehaviour
             if (img != null)
                 img.sprite = Resources.Load<Sprite>($"Icons/Moves/{move.Name}");
         }
+        MaxHeroHealth = hero.Stats.Health;
+        MaxMonsterHealth = monster.Stats.Health;
+        HeroHealth.fillAmount = (float)hero.Stats.Health / MaxHeroHealth;
+        MonsterHealth.fillAmount = (float)monster.Stats.Health / MaxMonsterHealth;
+
     }
 
     public IEnumerator ExecuteTurn(Move move)
@@ -151,6 +159,11 @@ public class BattleManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Alpha2)) StartCoroutine(ExecuteTurn(hero.Moveset[1]));
             else if (Input.GetKeyDown(KeyCode.Alpha3)) StartCoroutine(ExecuteTurn(hero.Moveset[2]));
             else if (Input.GetKeyDown(KeyCode.Alpha4)) StartCoroutine(ExecuteTurn(hero.Moveset[3]));
+        }
+        if (hero != null && monster != null)
+        {
+            HeroHealth.fillAmount = Mathf.Lerp(HeroHealth.fillAmount, (float)hero.Stats.Health / MaxHeroHealth, Time.deltaTime * 5f);
+            MonsterHealth.fillAmount = Mathf.Lerp(MonsterHealth.fillAmount, (float)monster.Stats.Health / MaxMonsterHealth, Time.deltaTime * 5f);
         }
     }
 }
