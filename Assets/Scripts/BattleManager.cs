@@ -15,6 +15,7 @@ public class BattleManager : MonoBehaviour
     public Transform equippedLayout;
     public Image HeroHealth;
     public Image MonsterHealth;
+    public GameObject damageTextPrefab;
     bool inProgress = false;
     private int MaxHeroHealth;
     private int MaxMonsterHealth;
@@ -73,14 +74,22 @@ public class BattleManager : MonoBehaviour
             {
                 move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
             }
-
+            if (move.Kind == "damage" || move.Kind == "damage_debuff")
+            {
+                var popup = Instantiate(damageTextPrefab, monster.transform.position + Vector3.up, Quaternion.identity);
+                popup.GetComponent<DamageText>().Setup((int)move.Power);
+            }
             Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
 
             yield return StartCoroutine(GameManager.Instance.GetNextMove());
             Move monsterMove = GameManager.Instance.nextMove;
             monster.ExecuteCorrectMove(monsterMove, hero);
-
+            if (monsterMove.Kind == "damage" || monsterMove.Kind == "damage_debuff")
+            {
+                var popup = Instantiate(damageTextPrefab, hero.transform.position + Vector3.up, Quaternion.identity);
+                popup.GetComponent<DamageText>().Setup((int)monsterMove.Power);
+            }
             Debug.Log($"Monster koristi {monsterMove.Name} | Kind: {monsterMove.Kind} | Scale: {monsterMove.Scale} | Power: {monsterMove.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
         }
