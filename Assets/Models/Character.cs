@@ -6,14 +6,16 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Stats Stats { get; set; }
-    public List<Buff> Buffs { get; set; }
+    public List<Buff> Buffs { get; set; } = new List<Buff>();
     public List<Move> Moveset { get; set; }
 
     public event Action Death;
 
-    public virtual bool ExecuteCorrectMove(Move m, Character target)
+    public virtual bool ExecuteCorrectMove(Move m, Character target, out int _skaliran)
     {
-        Buff buff = new Buff
+
+        _skaliran = 0;
+        Buff CreateBuff() => new Buff
         {
             Name = m.Name ?? "",
             Stat = m.Stat ?? "",
@@ -28,33 +30,48 @@ public class Character : MonoBehaviour
                 {
                     this.GetComponent<Animation>()?.Play("Attack");
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
-                    target.TakeDamage(m, stat);
-                    target.GetComponent<Animation>()?.Play("Hit");
+                    target.TakeDamage(m, stat, out _skaliran);
+
+                    if (target.Stats.Health > 0)
+                    {
+                        target.GetComponent<Animation>()?.Play("Hit");
+                    }
+
                     return true;
                 }
             case "damage_debuff":
                 {
                     this.GetComponent<Animation>()?.Play("Attack");
-
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
-                    target.TakeDamage(m, stat);
-                    target.GetComponent<Animation>()?.Play("Hit");
-                    target.ApplyBuff(buff);
+                    target.TakeDamage(m, stat, out _skaliran);
+
+                    if (target.Stats.Health > 0)
+                    {
+                        target.GetComponent<Animation>()?.Play("Hit");
+                    }
+
+                    target.ApplyBuff(CreateBuff());
+
                     return true;
                 }
             case "damage_heal":
                 this.GetComponent<Animation>()?.Play("Attack");
+                target.TakeDamage(m, Stats.Magic, out _skaliran);
 
-                target.TakeDamage(m, Stats.Magic);
-                target.GetComponent<Animation>()?.Play("Hit");
+                if (target.Stats.Health > 0)
+                {
+                    target.GetComponent<Animation>()?.Play("Hit");
+                }
+
                 Heal(m, Stats.Magic);
+
                 return true;
             case "buff":
-                return ApplyBuff(buff);
+                return ApplyBuff(CreateBuff());
             case "debuff":
-                return target.ApplyBuff(buff);
+                return target.ApplyBuff(CreateBuff());
             case "buff_cost_hp":
-                bool applied = ApplyBuff(buff);
+                bool applied = ApplyBuff(CreateBuff());
                 if (!applied)
                     return false;
                 Stats.Health -= m.HpCost.Value;
@@ -73,20 +90,20 @@ public class Character : MonoBehaviour
         Stats.Health += healAmount;
     }
 
-    public virtual void TakeDamage(Move move, int statLevel)
+    public virtual void TakeDamage(Move move, int statLevel, out int _skaliran)
     {
         string scale = move.Scale?.ToLowerInvariant();
-
+        _skaliran = 0;
         switch (scale)
         {
             case "magic":
-                {//ne koristim nula da ne pukne ako je stat 0 
-                 //takdodje napomena, log je ln
+                {
                     float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
                     float calc = move.Power * (1 + attackBonus);
-                    int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));//safeguard
+                    int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));
                     if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
+                    _skaliran = finalDamage;
                     break;
                 }
             case "physical":
@@ -97,6 +114,7 @@ public class Character : MonoBehaviour
                     int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));
                     if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
+                    _skaliran = finalDamage;
                     break;
                 }
         }

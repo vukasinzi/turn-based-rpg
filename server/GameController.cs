@@ -36,7 +36,7 @@ public class GameController : ControllerBase
     {
         var path = Path.Combine(Directory.GetCurrentDirectory(), "data/player.json");
 
-        var json = JsonSerializer.Serialize(hero, new JsonSerializerOptions { WriteIndented = false });
+        var json = JsonSerializer.Serialize(hero, new JsonSerializerOptions { WriteIndented = true });
 
 
         System.IO.File.WriteAllText(path, json);

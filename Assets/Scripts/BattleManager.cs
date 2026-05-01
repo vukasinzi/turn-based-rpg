@@ -19,10 +19,12 @@ public class BattleManager : MonoBehaviour
     bool inProgress = false;
     private int MaxHeroHealth;
     private int MaxMonsterHealth;
+
     public void OnMoveClicked()
     {
 
     }
+
     void OnHeroDeath() => StartCoroutine(HeroDeathRoutine());
     void OnMonsterDeath() => StartCoroutine(MonsterDeathRoutine());
 
@@ -60,7 +62,6 @@ public class BattleManager : MonoBehaviour
         MaxMonsterHealth = monster.Stats.Health;
         HeroHealth.fillAmount = (float)hero.Stats.Health / MaxHeroHealth;
         MonsterHealth.fillAmount = (float)monster.Stats.Health / MaxMonsterHealth;
-
     }
 
     public IEnumerator ExecuteTurn(Move move)
@@ -70,44 +71,53 @@ public class BattleManager : MonoBehaviour
         {
             hero.BuffExpire();
             monster.BuffExpire();
-            //izmena, prethodna verzija je podrazumevala reroll na frontu slanjem zahteva backu,
-            //sada imamo samo neki fallback koji u sustini ako izbaci nevalidan potez, sam izabere drugi.
-            while (!hero.ExecuteCorrectMove(move, monster))
+            int skaliran;
+            while (!hero.ExecuteCorrectMove(move, monster, out skaliran))
             {
                 move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
             }
             if (move.Kind == "damage" || move.Kind == "damage_debuff" || move.Kind == "damage_heal")
             {
                 var popup = Instantiate(damageTextPrefab, monster.transform.position + Vector3.up, Quaternion.identity);
-                popup.GetComponent<DamageText>().Setup((int)move.Power);
+                popup.GetComponent<DamageText>().Setup(skaliran);
             }
             Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
 
+            if (monster.Stats.Health <= 0)
+            {
+                yield break;
+            }
+
             yield return StartCoroutine(GameManager.Instance.GetNextMove());
             Move monsterMove = GameManager.Instance.nextMove;
-            monster.ExecuteCorrectMove(monsterMove, hero);
+            monster.ExecuteCorrectMove(monsterMove, hero, out skaliran);
             if (monsterMove.Kind == "damage" || monsterMove.Kind == "damage_debuff")
             {
                 var popup = Instantiate(damageTextPrefab, hero.transform.position + Vector3.up, Quaternion.identity);
-                popup.GetComponent<DamageText>().Setup((int)monsterMove.Power);
+                popup.GetComponent<DamageText>().Setup(skaliran);
             }
             Debug.Log($"Monster koristi {monsterMove.Name} | Kind: {monsterMove.Kind} | Scale: {monsterMove.Scale} | Power: {monsterMove.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
             yield return new WaitForSeconds(1f);
         }
         finally
         {
-            inProgress = false;
+            if (hero != null && monster != null && hero.Stats.Health > 0 && monster.Stats.Health > 0)
+            {
+                inProgress = false;
+            }
         }
     }
 
     IEnumerator HeroDeathRoutine()
     {
+        inProgress = true; 
+        OnDestroy();       
+
         hero.GetComponent<Animation>()?.Play("Death");
         yield return new WaitForSeconds(1f);
-        inProgress = true;
+        
         Debug.Log("Defeat");
-        OnDestroy();
         Destroy(hero.gameObject);
         GameManager.Instance.currentMonster = null;
         GameManager.Instance.hero = null;
@@ -117,15 +127,16 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator MonsterDeathRoutine()
     {
+        inProgress = true; 
+        OnDestroy();       
+
         monster.GetComponent<Animation>()?.Play("Death");
         yield return new WaitForSeconds(1f);
-        inProgress = true;
-        OnDestroy();
+        
         Debug.Log("Victory");
         yield return StartCoroutine(SavePlayerAndReturn());
-
-
     }
+
     HeroDTO h;
     IEnumerator LoadHero()
     {
@@ -139,6 +150,7 @@ public class BattleManager : MonoBehaviour
 
         h.equippedMoves = new List<Move>();
     }
+
     IEnumerator SavePlayerAndReturn()
     {
         yield return StartCoroutine(LoadHero());
@@ -157,8 +169,13 @@ public class BattleManager : MonoBehaviour
         h.AddXpAndLevelUp(100);
         h.equippedMoveIds = hero.Moveset.Select(m => m.Id).ToList();
 
-        string jsonData = JsonConvert.SerializeObject(h);
-
+        string jsonData = JsonConvert.SerializeObject(
+        h,
+        new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented
+        }
+        );
         using var request = UnityWebRequest.Post("http://localhost:5267/api/game/save", jsonData, "application/json");
         yield return request.SendWebRequest();
 
