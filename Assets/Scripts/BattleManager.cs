@@ -23,6 +23,8 @@ public class BattleManager : MonoBehaviour
     {
 
     }
+    void OnHeroDeath() => StartCoroutine(HeroDeathRoutine());
+    void OnMonsterDeath() => StartCoroutine(MonsterDeathRoutine());
 
     void OnDestroy()
     {
@@ -99,8 +101,10 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    void OnHeroDeath()
+    IEnumerator HeroDeathRoutine()
     {
+        hero.GetComponent<Animation>()?.Play("Death");
+        yield return new WaitForSeconds(1f);
         inProgress = true;
         Debug.Log("Defeat");
         OnDestroy();
@@ -108,14 +112,17 @@ public class BattleManager : MonoBehaviour
         GameManager.Instance.currentMonster = null;
         GameManager.Instance.hero = null;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        yield return null;
     }
 
-    void OnMonsterDeath()
+    IEnumerator MonsterDeathRoutine()
     {
+        monster.GetComponent<Animation>()?.Play("Death");
+        yield return new WaitForSeconds(1f);
         inProgress = true;
         OnDestroy();
         Debug.Log("Victory");
-        StartCoroutine(SavePlayerAndReturn());
+        yield return StartCoroutine(SavePlayerAndReturn());
 
 
     }
