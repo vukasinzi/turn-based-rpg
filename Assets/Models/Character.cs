@@ -26,20 +26,29 @@ public class Character : MonoBehaviour
 
             case "damage":
                 {
+                    this.GetComponent<Animation>()["Attack"].blendMode = AnimationBlendMode.Additive;
+                    this.GetComponent<Animation>()?.Play("Attack");
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                     target.TakeDamage(m, stat);
+                    target.GetComponent<Animation>()?.Play("Hurt");
                     return true;
                 }
             case "damage_debuff":
                 {
+                    this.GetComponent<Animation>()?.Play("Attack");
+
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                     target.TakeDamage(m, stat);
-
+                    this.GetComponent<Animation>()["Hurt"].blendMode = AnimationBlendMode.Additive;
+                    target.GetComponent<Animation>()?.Play("Hurt");
                     target.ApplyBuff(buff);
                     return true;
                 }
             case "damage_heal":
+                this.GetComponent<Animation>()?.Play("Attack");
+
                 target.TakeDamage(m, Stats.Magic);
+                target.GetComponent<Animation>()?.Play("Hurt");
                 Heal(m, Stats.Magic);
                 return true;
             case "buff":
@@ -74,7 +83,7 @@ public class Character : MonoBehaviour
         {
             case "magic":
                 {//ne koristim nula da ne pukne ako je stat 0 
-                //takdodje napomena, log je ln
+                 //takdodje napomena, log je ln
                     float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
                     float calc = move.Power * (1 + attackBonus);
                     int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));//safeguard

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6101191717375226502}
   - component: {fileID: -6893118524336397593}
   - component: {fileID: 1661310059673070190}
+  - component: {fileID: -3642747024569709860}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -179,3 +180,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &-3642747024569709860
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8963500699760547830}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: e0368842d8cf0c106bef7fc88a0b647c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e0368842d8cf0c106bef7fc88a0b647c, type: 2}
+  - {fileID: 7400000, guid: 8b0b1c323a2667778a16cbf43a931d85, type: 2}
+  - {fileID: 7400000, guid: 54009f66b5743b459a896d63d31d8acb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

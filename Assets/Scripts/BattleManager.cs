@@ -74,7 +74,7 @@ public class BattleManager : MonoBehaviour
             {
                 move = hero.Moveset[Random.Range(0, hero.Moveset.Count)];
             }
-            if (move.Kind == "damage" || move.Kind == "damage_debuff")
+            if (move.Kind == "damage" || move.Kind == "damage_debuff" || move.Kind == "damage_heal")
             {
                 var popup = Instantiate(damageTextPrefab, monster.transform.position + Vector3.up, Quaternion.identity);
                 popup.GetComponent<DamageText>().Setup((int)move.Power);
