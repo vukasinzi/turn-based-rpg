@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3130883474789179164}
   - component: {fileID: 6545304117846896890}
   - component: {fileID: 1317573690468372941}
+  - component: {fileID: 3027894559849049423}
   m_Layer: 0
   m_Name: Goblin Warrior
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6938779378476828118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.24949136, y: -3.295593, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,3 +180,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &3027894559849049423
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6938779378476828118}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 2209b26e41eb1056b85f1252efa00d69, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: fb19381b424ebd866b7cc42465ac8776, type: 2}
+  - {fileID: 7400000, guid: 5a84ac69a7b2bf264bf0fd468cbe06d4, type: 2}
+  - {fileID: 7400000, guid: 2209b26e41eb1056b85f1252efa00d69, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

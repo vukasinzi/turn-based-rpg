@@ -26,11 +26,10 @@ public class Character : MonoBehaviour
 
             case "damage":
                 {
-                    this.GetComponent<Animation>()["Attack"].blendMode = AnimationBlendMode.Additive;
                     this.GetComponent<Animation>()?.Play("Attack");
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                     target.TakeDamage(m, stat);
-                    target.GetComponent<Animation>()?.Play("Hurt");
+                    target.GetComponent<Animation>()?.Play("Hit");
                     return true;
                 }
             case "damage_debuff":
@@ -39,8 +38,7 @@ public class Character : MonoBehaviour
 
                     int stat = m.Scale?.ToLowerInvariant() == "magic" ? Stats.Magic : Stats.Attack;
                     target.TakeDamage(m, stat);
-                    this.GetComponent<Animation>()["Hurt"].blendMode = AnimationBlendMode.Additive;
-                    target.GetComponent<Animation>()?.Play("Hurt");
+                    target.GetComponent<Animation>()?.Play("Hit");
                     target.ApplyBuff(buff);
                     return true;
                 }
@@ -48,7 +46,7 @@ public class Character : MonoBehaviour
                 this.GetComponent<Animation>()?.Play("Attack");
 
                 target.TakeDamage(m, Stats.Magic);
-                target.GetComponent<Animation>()?.Play("Hurt");
+                target.GetComponent<Animation>()?.Play("Hit");
                 Heal(m, Stats.Magic);
                 return true;
             case "buff":

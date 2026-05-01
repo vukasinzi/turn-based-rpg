@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2066922651608444261}
   - component: {fileID: 1248409131543712133}
   - component: {fileID: -9199317224690829537}
+  - component: {fileID: 4375818159818395149}
   m_Layer: 0
   m_Name: Goblin Mage
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4206431507273783486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.02012347, y: -3.59518, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,3 +180,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &4375818159818395149
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4206431507273783486}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: da940faab7fdcbf6096bb34122f153c8, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: da940faab7fdcbf6096bb34122f153c8, type: 2}
+  - {fileID: 7400000, guid: 1b2b696f5ef8701b7be1009aeefcf03c, type: 2}
+  - {fileID: 7400000, guid: bdb17afe01d4688c6b9639a9d53635c8, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
