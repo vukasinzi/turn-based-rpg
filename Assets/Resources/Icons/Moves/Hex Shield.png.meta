@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: dacfa5ada2b4938139f938fd9fa910f7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2029474230864604885
+    second: Hex Shield_0
+  - first:
+      213: -3991297157819562205
+    second: Hex Shield_1
+  - first:
+      213: 7554347928685960397
+    second: Hex Shield_2
+  - first:
+      213: 1487715790040510401
+    second: Hex Shield_3
+  - first:
+      213: 2744755397957647999
+    second: Hex Shield_4
+  - first:
+      213: -4506056197741699815
+    second: Hex Shield_5
+  - first:
+      213: 1045232261489293593
+    second: Hex Shield_6
+  - first:
+      213: 3703144442267762950
+    second: Hex Shield_7
+  - first:
+      213: 6808364769430376135
+    second: Hex Shield_8
+  - first:
+      213: -450839993931937804
+    second: Hex Shield_9
+  - first:
+      213: -2844220379269652917
+    second: Hex Shield_10
+  - first:
+      213: 5329134600699041075
+    second: Hex Shield_11
+  - first:
+      213: 3728961642005684544
+    second: Hex Shield_12
+  - first:
+      213: -8913834521435097862
+    second: Hex Shield_13
+  - first:
+      213: -6687494456332480076
+    second: Hex Shield_14
+  - first:
+      213: -5809928108039640713
+    second: Hex Shield_15
+  - first:
+      213: -3060521642359039754
+    second: Hex Shield_16
+  - first:
+      213: 2834647052335600094
+    second: Hex Shield_17
+  - first:
+      213: 7995230255804093703
+    second: Hex Shield_18
+  - first:
+      213: -7611507926815842017
+    second: Hex Shield_19
+  - first:
+      213: -2206839043844870073
+    second: Hex Shield_20
+  - first:
+      213: 5731771746154122466
+    second: Hex Shield_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hex Shield_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 431
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b21918c80fbd5d3e0800000000000000
+      internalID: -2029474230864604885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 383
+        width: 145
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327832bb1601c98c0800000000000000
+      internalID: -3991297157819562205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 347
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dccd80f9a6f66d860800000000000000
+      internalID: 7554347928685960397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 487
+        width: 29
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cfaa18f0ad65a410800000000000000
+      internalID: 1487715790040510401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_4
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 451
+        width: 122
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ef99afd74571620800000000000000
+      internalID: 2744755397957647999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_5
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 418
+        width: 53
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d98a323c54771c0800000000000000
+      internalID: -4506056197741699815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 280
+        width: 85
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919f8d53439618e00800000000000000
+      internalID: 1045232261489293593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 243
+        width: 145
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60105590046346330800000000000000
+      internalID: 3703144442267762950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_8
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 207
+        width: 145
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce8e2f7fab2c7e50800000000000000
+      internalID: 6808364769430376135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_9
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 311
+        width: 146
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f7c5270a6b4eb9f0800000000000000
+      internalID: -450839993931937804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_10
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 172
+        width: 115
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e94b662ac4788d0800000000000000
+      internalID: -2844220379269652917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_11
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 316
+        width: 14
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335d8e23fa3e4f940800000000000000
+      internalID: 5329134600699041075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_12
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 139
+        width: 125
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0416ec44bdeefb330800000000000000
+      internalID: 3728961642005684544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_13
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 54
+        width: 24
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af43f33fab2bb4480800000000000000
+      internalID: -8913834521435097862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_14
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 17
+        width: 146
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b198ec493f3133a0800000000000000
+      internalID: -6687494456332480076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_15
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 103
+        width: 145
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7796db50b2dfe5fa0800000000000000
+      internalID: -5809928108039640713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_16
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 67
+        width: 145
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f85bc718c7d685d0800000000000000
+      internalID: -3060521642359039754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_17
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 32
+        width: 75
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1521ab970b65720800000000000000
+      internalID: 2834647052335600094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_18
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70598ae9e83c4fe60800000000000000
+      internalID: 7995230255804093703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_19
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 17
+        width: 145
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1162193edd7e5690800000000000000
+      internalID: -7611507926815842017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_20
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 17
+        width: 135
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 740f92bf49bbf51e0800000000000000
+      internalID: -2206839043844870073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex Shield_21
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 17
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec032fe8085b8f40800000000000000
+      internalID: 5731771746154122466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hex Shield_0: -2029474230864604885
+      Hex Shield_1: -3991297157819562205
+      Hex Shield_10: -2844220379269652917
+      Hex Shield_11: 5329134600699041075
+      Hex Shield_12: 3728961642005684544
+      Hex Shield_13: -8913834521435097862
+      Hex Shield_14: -6687494456332480076
+      Hex Shield_15: -5809928108039640713
+      Hex Shield_16: -3060521642359039754
+      Hex Shield_17: 2834647052335600094
+      Hex Shield_18: 7995230255804093703
+      Hex Shield_19: -7611507926815842017
+      Hex Shield_2: 7554347928685960397
+      Hex Shield_20: -2206839043844870073
+      Hex Shield_21: 5731771746154122466
+      Hex Shield_3: 1487715790040510401
+      Hex Shield_4: 2744755397957647999
+      Hex Shield_5: -4506056197741699815
+      Hex Shield_6: 1045232261489293593
+      Hex Shield_7: 3703144442267762950
+      Hex Shield_8: 6808364769430376135
+      Hex Shield_9: -450839993931937804
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
