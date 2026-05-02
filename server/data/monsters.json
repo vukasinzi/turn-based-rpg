@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Goblin Warrior",
+      "kill_xp": 175,
       "stats": {
         "health": 58,
         "attack": 7,
@@ -19,6 +20,7 @@
     {
       "id": 2,
       "name": "Goblin Mage",
+      "kill_xp": 225,
       "stats": {
         "health": 64,
         "attack": 4,
@@ -35,6 +37,7 @@
     {
       "id": 3,
       "name": "Witch",
+      "kill_xp": 400,
       "stats": {
         "health": 82,
         "attack": 5,
@@ -51,6 +54,7 @@
     {
       "id": 4,
       "name": "Giant Spider",
+      "kill_xp": 525,
       "stats": {
         "health": 100,
         "attack": 13,
@@ -67,6 +71,7 @@
     {
       "id": 5,
       "name": "Dragon",
+      "kill_xp": 2500,
       "stats": {
         "health": 135,
         "attack": 16,

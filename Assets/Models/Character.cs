@@ -197,4 +197,19 @@ public class Character : MonoBehaviour
             }
         }
     }
+    public virtual void ClearBuffs()
+    {
+        if (Buffs == null || Buffs.Count == 0) return;
+
+        foreach (Buff b in Buffs)
+        {
+            switch (b.Stat)
+            {
+                case "Attack": Stats.Attack -= b.Delta; break;
+                case "Defense": Stats.Defense -= b.Delta; break;
+                case "Magic": Stats.Magic -= b.Delta; break;
+            }
+        }
+        Buffs.Clear();
+    }
 }

@@ -62,6 +62,7 @@ public class BattleManager : MonoBehaviour
         MaxMonsterHealth = monster.Stats.Health;
         HeroHealth.fillAmount = (float)hero.Stats.Health / MaxHeroHealth;
         MonsterHealth.fillAmount = (float)monster.Stats.Health / MaxMonsterHealth;
+        Debug.Log("level: " + hero.Level);
     }
 
     public IEnumerator ExecuteTurn(Move move)
@@ -163,7 +164,11 @@ public class BattleManager : MonoBehaviour
     IEnumerator SavePlayerAndReturn()
     {
         yield return StartCoroutine(LoadHero());
-
+        hero.ClearBuffs();
+        hero.Stats.Health = h.stats.Health;
+        hero.XP += monster.Kill_xp;
+        h.stats = hero.Stats;
+        
         var validMoves = GameManager.Instance.currentMonster.Moveset
         .Where(m => !h.allMoves.Any(e => e.Name == m.Name))
         .ToList();
@@ -174,8 +179,9 @@ public class BattleManager : MonoBehaviour
             randomMove.Id = h.allMoves.Count > 0 ? h.allMoves.Max(m => m.Id) + 1 : 1;
             h.allMoves.Add(randomMove);
         }
-
-        h.AddXpAndLevelUp(100);
+        h.level = hero.Level;
+        h.xp = hero.XP;
+        
         h.equippedMoveIds = hero.Moveset.Select(m => m.Id).ToList();
 
         string jsonData = JsonConvert.SerializeObject(

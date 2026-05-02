@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         currentMonster.Id = monsterDTO.Id;
         currentMonster.Name = monsterDTO.Name;
         currentMonster.Moveset = monsterDTO.Moveset;
+        currentMonster.Kill_xp = monsterDTO.Kill_xp;
         manager.Init();
     }
 
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour
 
         GameObject heroObj = Instantiate(heroPrefab, heroSpawnPoint.position,heroPrefab.transform.rotation);
         this.hero = heroObj.GetComponent<Hero>();
+        this.hero.CopyLevel(dto.level, dto.xp);
+        
         this.hero.Name = dto.name;
         this.hero.Stats = dto.stats;
         this.hero.Moveset = dto.equippedMoves;

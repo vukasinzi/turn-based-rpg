@@ -1,8 +1,3 @@
-
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-
 public class Hero : Character
 {
     public string Name { get; set; }
@@ -17,13 +12,18 @@ public class Hero : Character
             level = value;
             Stats.Attack += 2;
             Stats.Defense += 2;
-            Stats.Health += 3;
+            Stats.Health += 5;
             Stats.Magic += 1;
         }
     }
+    public void CopyLevel(int newLevel,int newXP)
+    {
+       level = newLevel;
+       xp = newXP;  
+    }
 
+    public int LevelUpXP => 50 * level * level + 50 * level;
 
-    //seter za levelapovanje
     public int XP
     {
         get { return xp; }
@@ -32,15 +32,9 @@ public class Hero : Character
             xp = value;
             while (xp >= LevelUpXP)
             {
-                Level += 1;
-
+                xp -= LevelUpXP; 
+                Level += 1;    
             }
-
         }
-
     }
-    public int LevelUpXP => Level * 100;
-
-
-
 }

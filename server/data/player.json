@@ -1,13 +1,13 @@
 {
   "id": 1,
   "name": "Knight",
-  "level": 1,
-  "xp": 0,
+  "level": 2,
+  "xp": 250,
   "stats": {
-    "Health": 60,
-    "Attack": 9,
-    "Defense": 5,
-    "Magic": 5
+    "Health": 55,
+    "Attack": 10,
+    "Defense": 7,
+    "Magic": 7
   },
   "allMoves": [
     {
@@ -57,8 +57,31 @@
       "Delta": null,
       "Duration": null,
       "HpCost": null
+    },
+    {
+      "Id": 5,
+      "Name": "Headbutt",
+      "Kind": "damage",
+      "Scale": "physical",
+      "Power": 6.8,
+      "Target": "enemy",
+      "Stat": null,
+      "Delta": null,
+      "Duration": null,
+      "HpCost": null
+    },
+    {
+      "Id": 6,
+      "Name": "Rusty Blade",
+      "Kind": "damage",
+      "Scale": "physical",
+      "Power": 5.2,
+      "Target": "enemy",
+      "Stat": null,
+      "Delta": null,
+      "Duration": null,
+      "HpCost": null
     }
-   
   ],
   "equippedMoveIds": [
     1,
