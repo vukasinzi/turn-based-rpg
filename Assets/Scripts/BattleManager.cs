@@ -69,6 +69,8 @@ public class BattleManager : MonoBehaviour
         inProgress = true;
         try
         {
+            var monsterPs = monster.GetComponentInChildren<ParticleSystem>();
+            var heroPs = hero.GetComponentInChildren<ParticleSystem>();
             hero.BuffExpire();
             monster.BuffExpire();
             int skaliran;
@@ -81,13 +83,14 @@ public class BattleManager : MonoBehaviour
                 var popup = Instantiate(damageTextPrefab, monster.transform.position + Vector3.up, Quaternion.identity);
                 popup.GetComponent<DamageText>().Setup(skaliran);
             }
-            Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {move.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
-            yield return new WaitForSeconds(1f);
+            Debug.Log($"Hero koristi {move.Name} | Kind: {move.Kind} | Scale: {move.Scale} | Power: {skaliran} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
 
-            if (monster.Stats.Health <= 0)
-            {
-                yield break;
-            }
+            if (monster.Stats.Health <= 0) yield break;
+
+            yield return null;
+            if (monsterPs != null) yield return new WaitUntil(() => !monsterPs.isPlaying);
+            if (heroPs != null) yield return new WaitUntil(() => !heroPs.isPlaying);
+            yield return new WaitForSeconds(0.5f);
 
             yield return StartCoroutine(GameManager.Instance.GetNextMove());
             Move monsterMove = GameManager.Instance.nextMove;
@@ -97,8 +100,14 @@ public class BattleManager : MonoBehaviour
                 var popup = Instantiate(damageTextPrefab, hero.transform.position + Vector3.up, Quaternion.identity);
                 popup.GetComponent<DamageText>().Setup(skaliran);
             }
-            Debug.Log($"Monster koristi {monsterMove.Name} | Kind: {monsterMove.Kind} | Scale: {monsterMove.Scale} | Power: {monsterMove.Power} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
-            yield return new WaitForSeconds(1f);
+            Debug.Log($"Monster koristi {monsterMove.Name} | Kind: {monsterMove.Kind} | Scale: {monsterMove.Scale} | Power: {skaliran} | Hero HP: {hero.Stats.Health} | Monster HP: {monster.Stats.Health}");
+
+            yield return null;
+            monsterPs = monster.GetComponentInChildren<ParticleSystem>();
+            heroPs = hero.GetComponentInChildren<ParticleSystem>();
+            if (monsterPs != null) yield return new WaitUntil(() => !monsterPs.isPlaying);
+            if (heroPs != null) yield return new WaitUntil(() => !heroPs.isPlaying);
+            yield return new WaitForSeconds(0.5f);
         }
         finally
         {
@@ -111,12 +120,12 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator HeroDeathRoutine()
     {
-        inProgress = true; 
-        OnDestroy();       
+        inProgress = true;
+        OnDestroy();
 
         hero.GetComponent<Animation>()?.Play("Death");
         yield return new WaitForSeconds(1f);
-        
+
         Debug.Log("Defeat");
         Destroy(hero.gameObject);
         GameManager.Instance.currentMonster = null;
@@ -127,12 +136,12 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator MonsterDeathRoutine()
     {
-        inProgress = true; 
-        OnDestroy();       
+        inProgress = true;
+        OnDestroy();
 
         monster.GetComponent<Animation>()?.Play("Death");
         yield return new WaitForSeconds(1f);
-        
+
         Debug.Log("Victory");
         yield return StartCoroutine(SavePlayerAndReturn());
     }

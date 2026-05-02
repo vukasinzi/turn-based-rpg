@@ -88,6 +88,9 @@ public class Character : MonoBehaviour
         float calc = move.Power * (1 + (float)statLevel / 10f);
         int healAmount = Mathf.RoundToInt(calc);
         Stats.Health += healAmount;
+        var main = this.GetComponentInChildren<ParticleSystem>().main;
+        main.startColor = (Color)new Color32(0xFF, 0x55, 0x55, 0xFF);
+        this.GetComponentInChildren<ParticleSystem>()?.Play();
     }
 
     public virtual void TakeDamage(Move move, int statLevel, out int _skaliran)
@@ -98,21 +101,16 @@ public class Character : MonoBehaviour
         {
             case "magic":
                 {
-                    float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
-                    float calc = move.Power * (1 + attackBonus);
+                    float calc = move.Power * (1 + (float)statLevel / 10f);
                     int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));
-                    if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
                     _skaliran = finalDamage;
                     break;
                 }
             case "physical":
                 {
-                    float attackBonus = Mathf.Log(1 + statLevel) / Mathf.Log(11);
-                    float defenseReduction = Mathf.Log(1 + Stats.Defense) / Mathf.Log(11);
-                    float calc = move.Power * (1 + attackBonus - defenseReduction);
+                    float calc = move.Power * (1 + (float)statLevel / 10f) / (1 + (float)Stats.Defense / 10f);
                     int finalDamage = Mathf.Max(1, Mathf.RoundToInt(calc));
-                    if (finalDamage < 0) break;
                     Stats.Health -= finalDamage;
                     _skaliran = finalDamage;
                     break;
@@ -156,6 +154,19 @@ public class Character : MonoBehaviour
             case "Magic":
                 Stats.Magic += buff.Delta;
                 break;
+        }
+        if (buff.Delta > 0)
+        {
+            var main = this.GetComponentInChildren<ParticleSystem>().main;
+            main.startColor = (Color)new Color32(0x41, 0x4C, 0xE2, 0xFF);
+            this.GetComponentInChildren<ParticleSystem>()?.Play();
+        }
+        else
+        {
+            var main = this.GetComponentInChildren<ParticleSystem>().main;
+            main.startColor = (Color)new Color32(0x8F, 0xF8, 0x7E, 0xFF);
+            this.GetComponentInChildren<ParticleSystem>()?.Play();
+
         }
         return true;
     }

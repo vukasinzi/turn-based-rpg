@@ -15,8 +15,8 @@ public class Hero : Character
         set
         {
             level = value;
-            Stats.Attack += 1;
-            Stats.Defense += 1;
+            Stats.Attack += 2;
+            Stats.Defense += 2;
             Stats.Health += 3;
             Stats.Magic += 1;
         }

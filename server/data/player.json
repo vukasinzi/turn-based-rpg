@@ -1,13 +1,13 @@
 {
   "id": 1,
   "name": "Knight",
-  "level": 5,
-  "xp": 400,
+  "level": 1,
+  "xp": 0,
   "stats": {
-    "Health": 62,
-    "Attack": 12,
-    "Defense": 8,
-    "Magic": 10
+    "Health": 60,
+    "Attack": 9,
+    "Defense": 5,
+    "Magic": 5
   },
   "allMoves": [
     {
@@ -57,55 +57,8 @@
       "Delta": null,
       "Duration": null,
       "HpCost": null
-    },
-    {
-      "Id": 5,
-      "Name": "Dirty Kick",
-      "Kind": "damage_debuff",
-      "Scale": "physical",
-      "Power": 3,
-      "Target": "enemy",
-      "Stat": "Defense",
-      "Delta": -3,
-      "Duration": 2,
-      "HpCost": null
-    },
-    {
-      "Id": 6,
-      "Name": "Headbutt",
-      "Kind": "damage",
-      "Scale": "physical",
-      "Power": 6.8,
-      "Target": "enemy",
-      "Stat": null,
-      "Delta": null,
-      "Duration": null,
-      "HpCost": null
-    },
-    {
-      "Id": 7,
-      "Name": "Frenzy",
-      "Kind": "buff",
-      "Scale": "none",
-      "Power": 0,
-      "Target": "self",
-      "Stat": "Attack",
-      "Delta": 3,
-      "Duration": 2,
-      "HpCost": null
-    },
-    {
-      "Id": 8,
-      "Name": "Rusty Blade",
-      "Kind": "damage",
-      "Scale": "physical",
-      "Power": 5.2,
-      "Target": "enemy",
-      "Stat": null,
-      "Delta": null,
-      "Duration": null,
-      "HpCost": null
     }
+   
   ],
   "equippedMoveIds": [
     1,
