@@ -1,13 +1,13 @@
 {
   "id": 1,
   "name": "Knight",
-  "level": 2,
-  "xp": 75,
+  "level": 1,
+  "xp": 0,
   "stats": {
-    "Health": 55,
-    "Attack": 11,
-    "Defense": 8,
-    "Magic": 7
+    "Health": 50,
+    "Attack": 9,
+    "Defense": 6,
+    "Magic":6
   },
   "allMoves": [
     {
@@ -57,19 +57,9 @@
       "Delta": null,
       "Duration": null,
       "HpCost": null
-    },
-    {
-      "Id": 5,
-      "Name": "Frenzy",
-      "Kind": "buff",
-      "Scale": "none",
-      "Power": 0,
-      "Target": "self",
-      "Stat": "Attack",
-      "Delta": 3,
-      "Duration": 2,
-      "HpCost": null
     }
+
+
   ],
   "equippedMoveIds": [
     1,
